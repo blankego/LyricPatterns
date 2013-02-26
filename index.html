@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>欽定詞譜</title>
+    <script type="text/javascript" src="js/app.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/awesome.css">
+</head>
+<body>
+<div id="splitter" class="splitter">
+    <div class="splitterPane" id="leftPane">
+        <div id="navPane">
+            <div id="searchPane">
+                <label for="lookup">搜索</label><input id="lookup" type="text"/>
+            </div>
+            <div id="optsPane"></div>
+            <div id="toc" class="tabView">
+                <ul class="tabs">
+                    <li class="tab selected">詞牌</li>
+                    <li class="tab">格</li>
+                    <li class="tab">作者</li>
+                </ul>
+                <div class="tabContent">
+                    <div>
+                    </div>
+                    <div class="accordion">
+                        <div class="accordionCap">平韻格</div>
+                        <div class="accordionSect" id="patP"></div>
+                        <div class="accordionCap">仄韻格</div>
+                        <div class="accordionSect" id="patZ"></div>
+                        <div class="accordionCap">平仄韻轉換格</div>
+                        <div class="accordionSect" id="patH"></div>
+                        <div class="accordionCap">平仄協韻格</div>
+                        <div class="accordionSect" id="PatX"></div>
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="splitterPane">
+        <div id="mainPane">
+            <div id="contentPane">
+                <h2>欽定詞譜</h2>
+
+                <div>
+                     foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>
+                    foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>
+                    foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>
+                    foo<br>foo<br>foo<br>foo<br>
+                </div>
+            </div>
+            <div id="composePane">
+                <div id="writeArea">
+                    <textarea></textarea>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
