@@ -1,0 +1,84 @@
+body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+#navPane{
+    margin: 0;
+    height: 100%;
+
+    background-color: #effdff;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+#searchPane{
+
+    padding: 10px;
+}
+#tocPane{
+    overflow-y: auto;
+}
+#mainPane{
+    overflow-y: auto;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+#contentPane{
+    padding: 18px;
+}
+#composePane{
+    display: none;
+}
+.hidden{
+    display: none;
+}
+
+.tabContent{
+    border:1px solid darkblue;
+    border-top: none;
+    background-color: whitesmoke;
+    padding: 3px;
+}
+.tabs{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid darkblue;
+}
+.tab{
+    display: inline;
+    padding: 3px;
+    padding-bottom: 0;
+}
+.tab.selected{
+    background-color: whitesmoke;
+    border: 1px solid darkblue;
+    border-bottom-color:whitesmoke;
+}
+.splitter, .splitter>*{
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+.splitter{
+    width: 100%;
+}
+#leftPane{
+    width: 288px;
+}
+.splitterBar{
+    width:8px;
+    background-color: #c6dfc5;
+}
+.splitterToggle{
+    position: absolute;
+    top:45%;
+    height: 10%;
+    width: 100%;
+    background-color: gray;
+}
