@@ -5,22 +5,7 @@ body {
     padding: 0;
     margin: 0;
 }
-#navPane{
-    margin: 0;
-    height: 100%;
 
-    background-color: #effdff;
-    padding-left: 8px;
-    padding-right: 8px;
-}
-
-#searchPane{
-
-    padding: 10px;
-}
-#tocPane{
-    overflow-y: auto;
-}
 #mainPane{
     overflow-y: auto;
     padding: 0;
@@ -37,27 +22,65 @@ body {
     display: none;
 }
 
+.tabView{
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    right: 1px;
+    bottom: 1px;
+}
+
+.tabContent,.tab.selected{
+    background-color: #fffceb;
+    border:1px solid royalblue;
+}
+
 .tabContent{
-    border:1px solid darkblue;
+    position: absolute;
     border-top: none;
-    background-color: whitesmoke;
-    padding: 3px;
+    padding: 5px;
+    right: 2px;
+    left: 2px;
+    top: 18px;
+    bottom: 2px;
+    overflow: auto;
+    /*box-shadow: 3px 3px 0 #bdbdbd;*/
 }
 .tabs{
+    position: absolute;
     list-style-type: none;
     margin: 0;
-    padding: 0;
-    border-bottom: 1px solid darkblue;
+    height: 17px;
+    left: 2px;
+    right: 2px;
+    padding: 0 3px 0 3px;
+    border-bottom:1px solid royalblue;
 }
 .tab{
+
+    background-color: #faf7e6;
+    border:1px solid #456cf4;
+    position: relative;
     display: inline;
-    padding: 3px;
-    padding-bottom: 0;
+    margin-top: 2px;
+    padding: 3px 5px 0 5px;
+    border-bottom: none;
+    border-radius: 0 8px 0 0;
+    font-size: 10px;
+
+    /*box-shadow: 3px 0 0 #bdbdbd;*/
+}
+.tab:hover, .splitterToggle:hover{
+    cursor: pointer;
 }
 .tab.selected{
-    background-color: whitesmoke;
-    border: 1px solid darkblue;
+    top: 0;
+    font-weight: bolder;
+    font-size: 12px;
+    color: navy;
     border-bottom-color:whitesmoke;
+
+    z-index: 256;
 }
 .splitter, .splitter>*{
     position: absolute;
@@ -68,6 +91,7 @@ body {
 .splitter{
     width: 100%;
 }
+
 #leftPane{
     width: 288px;
 }
@@ -75,10 +99,96 @@ body {
     width:8px;
     background-color: #c6dfc5;
 }
+.splitterBar.collapsed{
+    width: 12px;
+    background-color: #c1dac0;
+}
+.splitterPane{
+    padding: 0;
+    margin: 0;
+}
+.splitterBar:hover{
+    cursor: col-resize;
+}
 .splitterToggle{
+    border-radius: 3px;
     position: absolute;
     top:45%;
     height: 10%;
     width: 100%;
     background-color: gray;
+}
+#mainPane div{
+    padding: 10px;
+}
+pre
+{
+    -moz-tab-size: 4;
+    -o-tab-size:   4;
+    tab-size:      4;
+}
+#navPane{
+    margin: 0;
+    height: 100%;
+    background-color: #effdff;
+    /*padding-left: 8px;*/
+    /*padding-right: 8px;*/
+    width: 100%;
+    position: absolute;
+}
+
+
+#searchPane {
+    border: 1px silver solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0;
+    left: 8px;
+    right: 8px;
+    top: 5px;
+    position: absolute;
+
+
+}
+#indicesPane{
+    position: absolute;
+    top:55px;
+    left: 8px;
+    right: 8px;
+    bottom: 2px;
+    margin: 0;
+    overflow-x: hidden;
+
+}
+.list {
+    overflow: auto;
+}
+.list>p{
+    margin: 0;
+}
+.list>p:hover{
+    cursor: pointer;
+    border: blue 1px solid;
+}
+#searchPane input{
+    display: inline;
+    clip: auto;
+}
+
+.unselectable{
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+pre{
+
+    font:20px MINGLIU, monospace;
+    color: midnightblue;
+    background-color: #fafff4;
+    border: 1px dotted seagreen;
+    border-radius: 5px;
+    padding: 10px;
 }

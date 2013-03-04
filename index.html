@@ -1,62 +1,233 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>欽定詞譜</title>
-    <script type="text/javascript" src="js/app.js"></script>
-    <link type="text/css" rel="stylesheet" href="css/awesome.css">
+	<title>欽定詞譜</title>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<script type="text/javascript" src="js/app.js"></script>
+	<link type="text/css" rel="stylesheet" href="css/awesome.css">
 </head>
 <body>
 <div id="splitter" class="splitter">
-    <div class="splitterPane" id="leftPane">
-        <div id="navPane">
-            <div id="searchPane">
-                <label for="lookup">搜索</label><input id="lookup" type="text"/>
-            </div>
-            <div id="optsPane"></div>
-            <div id="toc" class="tabView">
-                <ul class="tabs">
-                    <li class="tab selected">詞牌</li>
-                    <li class="tab">格</li>
-                    <li class="tab">作者</li>
-                </ul>
-                <div class="tabContent">
-                    <div>
-                    </div>
-                    <div class="accordion">
-                        <div class="accordionCap">平韻格</div>
-                        <div class="accordionSect" id="patP"></div>
-                        <div class="accordionCap">仄韻格</div>
-                        <div class="accordionSect" id="patZ"></div>
-                        <div class="accordionCap">平仄韻轉換格</div>
-                        <div class="accordionSect" id="patH"></div>
-                        <div class="accordionCap">平仄協韻格</div>
-                        <div class="accordionSect" id="PatX"></div>
-                    </div>
-                    <div></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="splitterPane">
-        <div id="mainPane">
-            <div id="contentPane">
-                <h2>欽定詞譜</h2>
+	<div class="splitterPane" id="leftPane" style="width: 288px">
+		<div id="navPane">
 
-                <div>
-                     foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>
-                    foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>
-                    foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>foo<br>
-                    foo<br>foo<br>foo<br>foo<br>
-                </div>
-            </div>
-            <div id="composePane">
-                <div id="writeArea">
-                    <textarea></textarea>
+			<div id="searchPane">
+				<form onsubmit="this.lookup.blur();return false;" name="search">
+					<input id="lookup" type="text" size="16"/>
+					<input id="submit" type="submit" value="篩選"/>
+				</form>
+				<div id="optsPane"></div>
+			</div>
+			<div id="indicesPane" class="tabView">
+				<ul class="tabs">
+					<li class="tab selected">詞牌</li>
+					<li class="tab">韻格</li>
+					<li class="tab">作者</li>
+				</ul>
+				<div class="tabContent">
+					<div class="tabPane list" id="toc">
+					</div>
+					<div class="tabPane list" id="categories">
+						<ul class="tabs">
+							<li>平韻格</li><li>仄韻格</li><li>平仄轉換</li><li>平仄協韻</li>
+						</ul>
+						<div class="tabContent">
+							<div class="list" id="catP"></div>
+							<div class="list" id="catZ"></div>
+							<div class="list" id="catH"></div>
+							<div class="list" id="catX"></div>
+						</div>
+					</div>
+					<div class="tabPane list" id="authors"></div>
+				</div>
+			</div>
 
-                </div>
-            </div>
-        </div>
-    </div>
+		</div>
+	</div>
+	<div class="splitterPane">
+		<div id="mainPane">
+			<div id="prolog">
+				<h3>〖軟體應用凡例〗</h3>
+				<ol>
+					<li>
+						○平聲、●仄聲、◎本仄可平、⊙本平可仄、□平韻、■仄韻、◇協平韻、◆協仄韻
+					</li>
+					<li>
+						譜內詞句以整句為〔。〕半句為〔、〕直截者為〔。〕蟬聯不斷者為〔、〕
+					</li>
+					<li> 於左側目錄欄內可分別依詞牌、作者、韻格（平韻、仄韻、平仄協韻、平仄換韻）的分類檢索詞譜。在左上角的輸入框中可輸入漢字及漢語拼音首字母對所列詞目加以篩選。
+					</li>
+				</ol>
+				<div>
+
+					<h2>欽定詞譜</h2>
+
+					<p><b> 清‧王奕清等編製</b></p>
+					<br>
+
+					<h3>提要</h3>
+
+					<p>
+						臣等謹按御定詞譜四十卷，康熙五十四年聖祖仁皇帝御定。<br>
+						詞萌于唐，而大盛于宋。然唐宋兩代皆無詞譜。蓋當日之詞，猶今日里巷之歌<br>
+						，人人解其音律，能自製腔，無須於譜。其或新聲獨造，為世所傳，如《霓裳》、<br>
+						《羽衣》之類，亦不過一曲一調之譜，無衷合眾體勒為一編者。元以來，南北曲行<br>
+						歌詞之法遂絕，姜夔《白石詞》中間有旁記，節拍如西域梵書狀者，亦無人能通其<br>
+						說。今之詞譜，皆取唐宋舊詞，以調名相同者互校，以求其句法字數；以句法字數<br>
+						相同者互校，以求其平仄；其句法字數有異同者，則據而注為又一體；其平仄有異<br>
+						同者，則據而注為可平可仄。自《嘯餘譜》以下，皆以此法，推究得其崖略，定為<br>
+						科律而已。然見聞未博，考證未精，又或參以臆斷無稽之說，往往不合于古法。<br>
+						<br>
+						惟近時萬樹作《詞律》，析疑辨誤所得為多，然仍不免於舛漏。惟我聖祖仁皇<br>
+						帝，聰明天授，事事皆深契精微。既御定唐、宋、金、元、明諸詩，立詠歌之准，<br>
+						御纂律呂精義，通聲氣之元；又以詞亦詩之餘，派其命儒臣輯為此譜，凡八百二十<br>
+						首調，二千三百六體。凡唐至元之遺篇，靡弗採錄；元人小令，其言近雅者，亦間<br>
+						附之；唐宋大曲，則彙為一卷，綴於末。每調各注其源流，每字各圖其平仄，每句<br>
+						各注其韻協，分刌節度，窮極窈眇，倚聲家可永守法程。蓋聖人裁成，萬類雖一事<br>
+						之微，必考古而立之制，類若斯矣。
+					</p>
+
+					<p>乾隆四十六年十二月恭校上<br>
+						總纂官臣紀昀、臣陸錫熊、臣孫士毅 總校官臣陸費墀 </p>
+
+					<h3>《御制詞譜》序</h3>
+
+					<p>
+						詞之有圖譜，猶詩之有體格也。詩本于古歌謠，詞本于周詩三百篇，皆可歌。<br>
+						凡散見於《儀禮》、《禮記》、《春秋》、《左氏傳》者，班班可考也。漢初樂府<br>
+						亦期協律，魏晉訖唐，諸體雜出，而比于律者蓋寡。唐之中葉，始為填詞，制調倚<br>
+						聲，歷五代、北宋而極盛。崇寧間《大晟樂府》所集，有十二律六十家八十四調，<br>
+						後遂增至二百餘，換羽移商，品目詳具。逮南渡後，宮調失傳，而詞學亦漸紊矣。<br>
+						夫詞寄於調，字之多寡有定數，句之長短有定式，韻之平仄有定聲，杪忽無差，始<br>
+						能諧合。否則，音節乖舛，體制混淆，此圖譜之所以不可略也。間覽近代《嘯餘》<br>
+						、《詞統》、《辭彙》、《詞律》諸書，原本《樽前》、《花間》、《草堂》遺說<br>
+						，頗能發明，尚有未備。既命儒臣，先輯歷代詩餘，親加裁定；復命校勘詞譜一編<br>
+						，詳次調體，剖析異同，中分句讀，旁列平仄，一字一韻，務正傳訛。按譜填詞，<br>
+						渢渢乎可赴節族而諧筦弦矣。《樂記》曰：凡音者，生人心者也，哀樂喜怒感於心<br>
+						，而傳於聲。詞之有調，亦各以類應，不可牽合，而起調畢曲，七聲一均，旋相為<br>
+						宮，更與周禮大司樂三宮、漢制三統之制相准。故紫陽大儒而詩餘不廢，是編之集<br>
+						，不獨俾承學之士，攄情綴採，有所據依，從此討論宮商，審定調曲，庶幾古昔樂<br>
+						章之遺響，亦可窺見于萬一云。
+					</p>
+
+					<p>康熙五十四年七月十六日<br>
+						日講官起居注翰林院侍讀學士加三級臣陳邦彥奉敕敬書 <br>
+					</p>
+
+					<h3>詞譜凡例</h3>
+
+					<p>
+						一、詞者，古樂府之遺也。前人按律以制調，後人按調以填詞。宋元以來，調<br>
+						名日多，舊譜未備。今廣搜博採，次第編輯，俾倚聲者知所考焉。 </p>
+
+					<p> 一、宋元人所撰詞譜，流傳者少，明《嘯餘譜》，諸書不無舛誤。近刻《詞律<br>
+						》，時有發明，然亦得失並見。是譜翻閱群書，互相參訂，凡舊譜分調、分段及句<br>
+						讀音韻之誤，悉據唐、宋、元詞校定。
+					</p>
+
+					<p> 一、調以長短分先後。若同一調名，則長短彙列，以又一體別之，其添字、減<br>
+						字、攤破、偷聲、促拍、近拍以及慢詞，皆按字數分編。至唐人大曲如《涼州》、<br>
+						《水調歌》，宋人大曲如《九張機》、《薄媚》，字數不齊，各以類附輯為末卷。
+					</p>
+
+					<p> 一、唐人長短句，悉照《樽前》、《花間》、《花庵》諸選收入，其五、六、<br>
+						七言絕句亦各採一二首，以備其體；至元人小令，略效《詞林》、萬選之例，取其<br>
+						優雅者，非以曲混詞也。
+					</p>
+
+					<p> 一、每調選用唐、宋、元詞一首，必以創始之人所作本詞為正體，如《憶秦娥<br>
+						》創自李白，四十六字，至五代馮延巳則三十八字，宋毛滂則三十七字，張先則四<br>
+						十一字，皆李詞之變格也。斷列李詞在前，諸詞附後，其無考者，以時代為先後。
+					</p>
+
+					<p> 一、引用之詞，皆宋、元選本及各人本集，其無名氏詞亦注明出某書，以便校<br>
+						勘。 </p>
+
+					<p> 一、圖譜專注備體，非選詞也。然間有俚俗不成句法，並無別首可錄者，雖係<br>
+						宋詞，仍不採入。 </p>
+
+					<p> 一、詞名原委及一調異名之故，散見群書者，悉為採注。 </p>
+
+					<p> 一、詞中句讀不可不辨，有四字句而上一下一中兩字相連者，有五字句而上一<br>
+						下四者，有六字句而上三下三者，有七字句而上三下四者，有八字句而上一下七或<br>
+
+						上五下三、上三下五者，有九字句而上四下五或上六下三、上三下六者，此等句法<br>
+						，不可枚舉，譜內以整句為句，半句為讀；直截者為句，蟬聯不斷者為讀，逐一注<br>
+						明行間。至詞有拗句，尤關音律，如溫庭筠之〔斷腸瀟湘春鷹飛〕、〔萬枝香雪開<br>
+						已偏〕皆是；又有一句五字皆平聲者，如史達祖《壽樓春》詞之〔夭桃花清晨〕句<br>
+						；一句五字皆仄者者，如周邦彥《浣溪沙慢》之〔水竹舊院落〕句，俱一定不可易<br>
+						，譜內各為注出。
+					</p>
+
+					<p> 一、韻有三聲協者，有間入仄韻于平韻中者，有換韻者，有疊韻者，有短韻藏<br>
+						於句中者，逐一注明。至宋人填詞，間遵古韻，不外禮部韻略所注通轉之法，或有<br>
+						從中原雅音者，俱照原本採錄。
+					</p>
+
+					<p> 一、每調一詞，旁列一圖，以虛實朱圈分別平仄，平用虛圈，仄用實圈，字本<br>
+						平而可仄者上虛下實，字本仄而可平者上實下虛。<font color="#FF6600">至詞中句法，如詩中五言、七言<br>
+							者，其第一字、第三字類多可平可仄，似不必拘譜，內亦參校舊詞，始為作圖。至<br>
+							一定平仄，別譜有異同者，必引證其句，注明本詞之下。又可平可仄，中遇去聲字<br>
+							，最為緊要，平聲可以入聲替上聲，不可以去聲替。</font>沈伯時<a href="http://home.educities.edu.tw/f5101231/f21.html">《樂府指迷》</a>論之最詳<br>
+						，譜中凡用去聲字不可易者，悉為標出。
+					</p>
+
+					<p> 一、宋人集中，如柳永、姜夔詞，間存宮調，悉照原注備載。若夫四聲二十八<br>
+						調，或為鬲指之聲，或為三犯、四犯之曲，以至按律諧聲，所以被諸管弦者，在宋<br>
+						張炎已云〔舊譜零落姑置勿論〕云。
+					</p>
+  <pre>
+	奉旨開列總閱、校對、纂修、分纂、校刊諸臣職名：
+		南書房總閱官	經筵講官文淵閣大學士兼吏部尚書臣陳廷敬
+		南書房校對官	日講官起居注詹事府少詹事兼翰林院侍講學士加四級臣蔣廷錫
+		日講官起居注翰林院侍講學士加二級				臣勵廷儀
+		日講官起居注翰林院侍講學士加一級				臣張廷玉
+		日講官起居注翰林院侍講學士加五級				臣陳邦彥
+		日講官起居注翰林院侍讀加一級					臣趙熊詔
+		右春坊右中允兼翰林院編修加一級				臣王圖炳
+	纂修官
+		日講官起居注詹事府詹事兼翰林院侍讀學士加二級	臣王奕清
+		候補國子監祭酒提督江南學正					臣餘正健
+		詹事府右春坊右庶子掌坊事兼翰林院侍講			臣閻錫爵
+		分纂人員
+		翰林院編修加一級							臣儲在文
+		翰林院編修加一級							臣楊祖楫
+		翰林院編修加一級							臣王時鴻
+		翰林院檢討加一級							臣楊　湝
+		翰林院編修								臣吳　襄
+		教習進士									臣杜　詔
+		直隸順天府懷柔縣知縣						臣吳顥果
+		直隸順德府鉅鹿縣知縣						臣秦　培
+		湖廣荊州府公安縣知縣						臣沈　寅
+		廣東廣州府新寧縣知縣						臣鄔維新
+		廣東肇慶府廣寧縣知縣						臣鄭　韻
+		廣西桂林府靈川縣知縣						臣樓　儼
+		候選州同知								臣錢元台
+	校刊官 日講官起居注詹事府詹事兼翰林院侍讀學士加二級	臣王奕清
+  </pre>
+				</div>
+				<hr/>
+				<h4>數字化貢獻者</h4>
+
+				<div>此欽定詞譜經惡人谷珠樓依原譜影本以簡字製作，<br>
+					由胖丁轉以繁體輸入並重新編排校對。<br>
+					篇尾▲號乃胖丁依據《詞律校勘記》加註。<br>
+					動態網頁版由<a href="http://blankego.github.com">希夷先生</a>開發
+				</div>
+			</div>
+
+			<div id="contentPane">
+
+			</div>
+			<div id="composePane">
+				<div id="writeArea">
+					<textarea></textarea>
+
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+<iframe id="ifrm" class="hidden"></iframe>
 </body>
 </html>

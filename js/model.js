@@ -1,4 +1,5 @@
-var Class = require('./oop_utils').Class
+var oop = require('./oop_utils')
+	,Class = oop.Class
 	, Ind = require('./init_indices')
 	, aAcronyms = Ind.aAcronyms
 	, tAcronyms = Ind.tAcronyms
@@ -33,8 +34,7 @@ var AcronymFilter = NameFilter.$ext({
 	filter: function (kw) {
 		var res = [], i, j, ent;
 		AcronymFilter.$.filter.call(this,kw);
-		for (i = this.cache.length; i--;) {
-			ent = this.cache[i];
+		for (i = 0; ent = this.cache[i++];) {
 			for (j = ent.length; --j;) {
 				res.unshift(this.refTbl[ent[j]]);
 			}
@@ -53,3 +53,5 @@ module.exports = {
 	tAFilter: new AcronymFilter(tAcronyms,titles)
 
 };
+
+oop.merge(module.exports,Ind);

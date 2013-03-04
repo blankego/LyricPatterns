@@ -9,6 +9,7 @@ module.exports = (function () {
         , charCounts = {}
         , categories = {P: [], Z: [], H: [], X: []}
         , res = {
+		    indices: raw.indices,
             titles: titles, tAcronyms: [],
             cCounts: [], categories: categories,
             authors: authors, aAcronyms: []
@@ -36,6 +37,7 @@ module.exports = (function () {
 
     for (i = 0; i < raw.indices.length; ++i) {
         ent = raw.indices[i];
+	    var newEnt = [];
         ent[0].split('|').map(splitAcronyms).forEach(function (arr) {
             //title acronyms as obj in place of a SET, should be converted to arr later
             for (var j = 1; j < arr.length; ++j) {
