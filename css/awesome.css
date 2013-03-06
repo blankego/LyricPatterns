@@ -41,7 +41,7 @@ body {
     padding: 5px;
     right: 2px;
     left: 2px;
-    top: 18px;
+    top: 20px;
     bottom: 2px;
     overflow: auto;
     /*box-shadow: 3px 3px 0 #bdbdbd;*/
@@ -50,7 +50,7 @@ body {
     position: absolute;
     list-style-type: none;
     margin: 0;
-    height: 17px;
+    height: 19px;
     left: 2px;
     right: 2px;
     padding: 0 3px 0 3px;
@@ -60,13 +60,15 @@ body {
 
     background-color: #faf7e6;
     border:1px solid #456cf4;
+    top: 1px;
+    /*height: 16px;*/
     position: relative;
     display: inline;
-    margin-top: 2px;
-    padding: 3px 5px 0 5px;
+    margin-top: 0;
+    padding: 2px 3px 0 3px;
     border-bottom: none;
     border-radius: 0 8px 0 0;
-    font-size: 10px;
+    font-size: 11px;
 
     /*box-shadow: 3px 0 0 #bdbdbd;*/
 }
@@ -74,9 +76,10 @@ body {
     cursor: pointer;
 }
 .tab.selected{
-    top: 0;
+    top: 1px;
+    /*height: 20px;*/
     font-weight: bolder;
-    font-size: 12px;
+    font-size: 13px;
     color: navy;
     border-bottom-color:whitesmoke;
 
@@ -126,6 +129,12 @@ pre
     -moz-tab-size: 4;
     -o-tab-size:   4;
     tab-size:      4;
+    font:20px MINGLIU, monospace;
+    color: midnightblue;
+    background-color: #fafff4;
+    border: 1px dotted seagreen;
+    border-radius: 5px;
+    padding: 10px;
 }
 #navPane{
     margin: 0;
@@ -150,6 +159,25 @@ pre
 
 
 }
+#catSwitch {
+    position: absolute;
+    top: 55px;
+    right: 8px;
+    font: 12px monospace;
+    z-index: 222;
+}
+#catSwitch span{
+    border: 1px solid lightblue;
+    background-color: papayawhip;
+}
+#catSwitch>span:hover{
+    cursor: pointer;
+}
+#catSwitch>span.selected{
+    font-weight: bold;
+    background-color: darkblue;
+    color: lightyellow;
+}
 #indicesPane{
     position: absolute;
     top:55px;
@@ -158,6 +186,7 @@ pre
     bottom: 2px;
     margin: 0;
     overflow-x: hidden;
+    z-index: 111;
 
 }
 .list {
@@ -165,10 +194,14 @@ pre
 }
 .list>p{
     margin: 0;
+    padding: 0 6px 0 6px;
 }
 .list>p:hover{
     cursor: pointer;
     border: blue 1px solid;
+}
+.list>p>div{
+    float: right;
 }
 #searchPane input{
     display: inline;
@@ -183,12 +216,22 @@ pre
     -o-user-select: none;
     user-select: none;
 }
-pre{
 
-    font:20px MINGLIU, monospace;
-    color: midnightblue;
-    background-color: #fafff4;
+#contentPane ul li:hover{
+    cursor: pointer;
+    border: 1px blue solid;
+}
+
+#contentPane div, .patBtn:hover{
+    cursor: pointer;
+}
+#contentPane div {
+    font: bold;
+    color: darkcyan;
+}
+.patBtn{
+    float: right;
     border: 1px dotted seagreen;
-    border-radius: 5px;
-    padding: 10px;
+    border-radius: 4px;
+    background-color: lightcyan;
 }

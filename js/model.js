@@ -5,6 +5,7 @@ var oop = require('./oop_utils')
 	, tAcronyms = Ind.tAcronyms
 	, authors = Ind.authors
 	, titles = Ind.titles
+	, cat = Ind.cat
 	;
 
 
@@ -15,7 +16,6 @@ var NameFilter = Class.$ext({
 		this.kw = '';
 	},
 	filter: function (kw) {
-
 		var me = this;
 		return (!kw || typeof kw !== 'string') ?
 			me.tbl :
@@ -32,6 +32,7 @@ var AcronymFilter = NameFilter.$ext({
 		this.refTbl = refTbl;
 	},
 	filter: function (kw) {
+		if(!kw)return this.tbl;
 		var res = [], i, j, ent;
 		AcronymFilter.$.filter.call(this,kw);
 		for (i = 0; ent = this.cache[i++];) {
@@ -43,6 +44,13 @@ var AcronymFilter = NameFilter.$ext({
 	}
 });
 
+var catFilters = {};
+Object.keys(cat).forEach(function(k){
+	catFilters[k] = {
+		nFilter:new NameFilter(cat[k].list),
+		aFilter:new AcronymFilter(cat[k].acronyms, cat[k].list)
+	}
+});
 
 module.exports = {
 	NameFilter: NameFilter,
@@ -50,8 +58,9 @@ module.exports = {
 	aFilter: new NameFilter(authors),
 	tFilter: new NameFilter(titles),
 	aAFilter: new AcronymFilter(aAcronyms,authors),
-	tAFilter: new AcronymFilter(tAcronyms,titles)
-
+	tAFilter: new AcronymFilter(tAcronyms,titles),
+	cat:catFilters
 };
+
 
 oop.merge(module.exports,Ind);
