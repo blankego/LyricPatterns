@@ -57,11 +57,39 @@ document.addEventListener("DOMContentLoaded", function () {
 	$$('composeOff').onclick = hideEditor;
 
 	function compose(pat) {   //TODO
+
 		showEditor();
-		var p = new mod.Pattern(pat)
-			,area = editor.lastElementChild;
+		pat = new mod.Pattern(pat);
+		var area = editor.lastElementChild
+			, p = pat.getPresentation()
+			, pSym = mod.pSymbols;
 		area.innerHTML = '';
-		area.appendChild(p.getPresentation());
+		area.appendChild(p);
+		function showScore(represent, score){
+			if(Array.isArray(score)){
+				$$('editMessage').className = '';
+				score = [].concat.apply([],score);
+				for(var i = 0,j = 0, ch; (ch = represent.children[i++]) && j < score.length;){
+					if(!ch.textContent.match(pSym))continue;
+					ch.className = score[j] === true ? 'good': score[j] === false ? 'bad' : 'unknown';
+					j++;
+				}
+			}else{
+				//TODO
+				$$('editMessage').className = 'show';
+			}
+
+		}
+		forEach(area.children, function (stanza, i) {
+			if (stanza.tagName === 'INPUT') {
+				new InputWatcher(stanza).addWatcher(function (txt) {
+					stanza.value = txt = txt.replace(/\s/, '　');
+					var represent = stanza.previousElementSibling;
+					var score = pat.check(Math.floor(i / 2), txt);
+					showScore(represent, score);
+				});
+			}
+		});
 	}
 
 	function updateContent(con, title, state) {

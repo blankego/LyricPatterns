@@ -279,3 +279,30 @@ iframe{
     font-size: smaller;
     margin: 0 0 5px 3px;
 }
+#editArea {
+    font: 12px PMingLIU,monospace;
+
+}
+#editArea input[type="text"]{
+    font: 12px PMingLIU,monospace;
+    border: none;
+}
+.good{
+    background-color: greenyellow;
+}
+.bad{
+    background-color: lightpink;
+}
+.unknown{
+    background-color: powderblue;
+}
+#editMessage{
+    visibility: hidden;
+    border-radius: 5px;
+    background-color: lightgray;
+    color: darkmagenta;
+}
+#editMessage.show{
+    visibility: visible;
+}
+

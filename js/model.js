@@ -10,7 +10,7 @@ var oop = require('./oop_utils')
 	, rimeBook = rb.rimeBook
 	, rimeNames = rb.rimeNames
 	, j2h = require('./stuffUI').j2h;
-	;
+;
 
 
 var NameFilter = Class.$ext({
@@ -83,9 +83,9 @@ var RimeBook = Class.$ext({
 	}
 });
 
-function toCharArray(s){
-	var r = [], i, c, code;
-	for(i = 0; c = s.charCodeAt(i);i++){ r.push(s[i] + (0xD800 <= c && c < 0xDC00)? s[++i]:'');}
+function toCharArray(s) {
+	var r = [], i, c;
+	for (i = 0; c = s.charCodeAt(i); i++) { r.push(s[i] + ((0xD800 <= c && c < 0xDC00) ? s[++i] : ''));}
 	return r;
 }
 rimeBook = new RimeBook(rimeBook, /\d+[PZR]/g);
@@ -101,8 +101,8 @@ function intersect(a) {
 	return a || []
 }
 var pPunt = /[^。，？！、 　]+/g;
-function splitLine(l){
-	return l.match(pPunt);
+function splitLine(l) {
+	return l.match(pPunt).map(function(sect){return toCharArray(sect)});
 }
 var Pattern = Class.$ext({
 	init: function (pre) {
@@ -112,30 +112,33 @@ var Pattern = Class.$ext({
 		(typeof pre === 'string' ? pre : pre.textContent).trim().split('\n')
 			.forEach(function (stanza) {
 				var m = stanza.match(pSymbols);
-				if (m){
+				if (m) {
 					me.pattern.push(m);
 					me.raw.push(stanza);
 				}
 			});
 	},
-	getLinePresentation: function(idx){
-		return j2h({p:{
-			klass:'patternRepresentation',
-			_: toCharArray(this.raw[idx]).map(function(ch){	return {tt: ch};})}
+	getLinePresentation: function (idx) {
+		return j2h({p: {
+			klass: 'patternRepresentation',
+			_: toCharArray(this.raw[idx]).map(function (ch) { return {span: ch};})}
 		});
 	},
-	getPresentation: function(){
+	getPresentation: function () {
 		var me = this;
-		return j2h(me.raw.map(function(stanza,i){return me.getLinePresentation(i)}));
+		return j2h(me.raw.map(function (stanza, i) {
+			var p = me.getLinePresentation(i);
+			return [p, {input: {type: 'text', size: '' + p.children.length * 2}}];
+		}));
 	},
 	check: function (stanzaId, lines) {
-		if(!Array.isArray(lines))lines = splitLine(lines);
-  	    var stanza = this.pattern[stanzaId], res = [];
+		if (!Array.isArray(lines))lines = splitLine(lines);
+		var stanza = this.pattern[stanzaId], res = [];
 		for (var i = -1, l; l = lines[++i];) {
-			if(!stanza[i] || stanza[i].length !== l.length)return 'wrong structure';
+			if (!stanza[i] || stanza[i].length < l.length)return 'wrong structure';
 			res.push([]);
 			for (var j = -1, ch; ch = l[++j];) {
-				res[i].push(this.checkChar(stanza[i][j],ch));
+				res[i].push(this.checkChar(stanza[i][j], ch));
 			}
 		}
 		return res;
@@ -178,7 +181,8 @@ module.exports = {
 	tAFilter: new AcronymFilter(tAcronyms, titles),
 	rimeBook: rimeBook,
 	rimeNames: rimeNames,
-	Pattern: Pattern
+	Pattern: Pattern,
+	pSymbols: pSymbols
 };
 
 
