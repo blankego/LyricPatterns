@@ -129,17 +129,15 @@ var d = document
 	InputWatcher = Widget.$ext({
 		init: function (el, opt) {
 			InputWatcher.$ctor(this, el, opt);
-			var me = merge(this, {
-				input: el,
-				lastVal: el.value
-			});
+			var me = this;
+			me.lastVal = me.getVal();
 			el.onfocus = function () { me.watchId = setInterval(function () { me.update() }, 50); };
 			el.onblur = function () {
 				clearInterval(me.watchId);
 				me.update();
-				//console.log(el.id + " blurring");
 			};
 		},
+		getVal: function(){return this.elem.value.trim();},
 		update: function () {
 			var me = this, v = me.input.value.trim();
 			if (v !== me.lastVal) {
@@ -171,7 +169,7 @@ var d = document
 			el.appendChild(frag);
 			el.onclick = function (e) {
 				var t = e.target, idx = me.ref.indexOf(t);
-				if (t.tagName === 'P')me.notify(t, me.data[idx], idx);
+				if (t.tagName === 'P' && idx >= 0)me.notify(t, me.data[idx], idx);
 			}
 		},
 		filter: function (items) {

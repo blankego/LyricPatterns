@@ -15,9 +15,7 @@ body {
 #contentPane{
     padding: 18px;
 }
-#composePane{
-    display: none;
-}
+
 .hidden{
     display: none;
 }
@@ -229,9 +227,55 @@ pre
     font: bold;
     color: darkcyan;
 }
+#contentPane p.rhymingChars{
+    font-size: xx-large;
+    color: navy;
+}
 .patBtn{
     float: right;
     border: 1px dotted seagreen;
     border-radius: 4px;
     background-color: lightcyan;
+}
+iframe{
+    display: none;
+}
+#composePane{
+    position: absolute;
+    top: 150px;
+    left: 300px;
+    width: 650px;
+    height: 300px;
+    z-index: 555;
+    background-color: antiquewhite;
+    border: 2px wheat solid;
+    border-radius: 8px;
+    padding: 5px;
+
+}
+[draggable]{
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: move;
+
+}
+#composeOff{
+    float: right;
+    border: gray;
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: black;
+    border-radius: 6px;
+    padding: 0;
+}
+#composeOff:hover{
+    cursor: pointer;
+}
+.rime{
+    color: slategray;
+    font-size: smaller;
+    margin: 0 0 5px 3px;
 }

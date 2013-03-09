@@ -27,13 +27,14 @@
 			<div id="indicesPane" class="tabView">
 				<ul class="tabs">
 					<li class="tab selected">詞牌</li>
-
 					<li class="tab">作者</li>
+					<li class="tab">詞林正韻</li>
 				</ul>
 				<div class="tabContent">
 					<div class="tabPane list" id="toc">
 					</div>
 					<div class="tabPane list" id="authors"></div>
+					<div class="tabPane list" id="rimes"></div>
 				</div>
 			</div>
 
@@ -214,15 +215,15 @@
 			<div id="contentPane">
 
 			</div>
-			<div id="composePane">
-				<div id="writeArea">
-					<textarea></textarea>
-
-				</div>
-			</div>
 		</div>
 	</div>
+
 </div>
-<iframe id="ifrm" class="hidden"></iframe>
+<div id="composePane" class="hidden" draggable="true">
+	<div id="composeOff">×</div>
+	<div id="editArea">
+	</div>
+</div>
+<iframe id="iframe"></iframe>
 </body>
 </html>

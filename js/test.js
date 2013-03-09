@@ -1,8 +1,8 @@
 var model = require('./model')
 	, jsdom = require('jsdom')
-	, sui = require('./stuffUI')
-	, j2h = sui.j2h
-	, document = sui.document
+//	, sui = require('./stuffUI')
+//	, j2h = sui.j2h
+//	, document = sui.document
 	;
 
 module.exports = {
@@ -36,30 +36,43 @@ module.exports = {
 		test.ok(res.some(function (ent) {return ent[0] === '雨霖鈴'}));
 		test.done();
 	},
-	testJ2H: function (test) {
-		var n = j2h("txt");
-		test.equal(n.nodeName, "#text");
-		test.equal(n.data, 'txt');
-		var j = {
-			p: {
-				klass: 'myClass',
-				title: 'p title',
-				_: ['text 1',
-					{div: ['text 2', {span: 'text 3'}]}]
-			}
-		};
-		n = j2h({p:[document.createElement('div'),'text']});
-		test.equal(n.firstChild.nodeName, 'DIV');
-		test.equal(n.childNodes[1].data,'text');
-
-		n = j2h(j);
-		console.log(n.outerHTML);
-		test.equal(n.nodeName, "P");
-		test.equal(n.getAttribute('class'), 'myClass');
-		test.equal(n.childNodes.length, 2);
-		test.equal(n.children[0].children[0].tagName, 'SPAN');
-		test.equal(n.children[0].children[0].innerHTML, 'text 3');
+//	testJ2H: function (test) {
+//		var n = j2h("txt");
+//		test.equal(n.nodeName, "#text");
+//		test.equal(n.data, 'txt');
+//		var j = {
+//			p: {
+//				klass: 'myClass',
+//				title: 'p title',
+//				_: ['text 1',
+//					{div: ['text 2', {span: 'text 3'}]}]
+//			}
+//		};
+//		n = j2h({p:[document.createElement('div'),'text']});
+//		test.equal(n.firstChild.nodeName, 'DIV');
+//		test.equal(n.childNodes[1].data,'text');
+//
+//		n = j2h(j);
+//		console.log(n.outerHTML);
+//		test.equal(n.nodeName, "P");
+//		test.equal(n.getAttribute('class'), 'myClass');
+//		test.equal(n.childNodes.length, 2);
+//		test.equal(n.children[0].children[0].tagName, 'SPAN');
+//		test.equal(n.children[0].children[0].innerHTML, 'text 3');
+//		test.done();
+//	}
+	testRimeBook: function (test) {
+		var rBook = model.rimeBook;
+		test.ok(rBook.isOblique('犬') === true);
+		test.ok(rBook.isLevel('醒') === true);
+		test.ok(rBook.isOblique('醒') === true);
+		test.ok(rBook.isLevel('𢐈') === undefined);
 		test.done();
+	},
+
+	testPattern: function(test){
+
 	}
+
 
 };
