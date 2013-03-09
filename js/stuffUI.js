@@ -139,7 +139,7 @@ var d = document
 		},
 		getVal: function(){return this.elem.value.trim();},
 		update: function () {
-			var me = this, v = me.input.value.trim();
+			var me = this, v = me.getVal();
 			if (v !== me.lastVal) {
 				me.lastVal = v;
 				me.notify(v);
